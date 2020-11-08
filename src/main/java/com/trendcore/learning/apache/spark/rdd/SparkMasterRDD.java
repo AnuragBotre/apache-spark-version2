@@ -6,7 +6,6 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.rdd.RDD;
 import scala.reflect.ClassManifestFactory;
-import scala.reflect.ClassTag;
 
 import java.util.Arrays;
 import java.util.List;
