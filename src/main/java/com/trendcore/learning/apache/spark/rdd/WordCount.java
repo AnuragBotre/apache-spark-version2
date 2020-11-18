@@ -17,6 +17,12 @@ public class WordCount {
 
     public static void main(String[] args) throws IOException {
 
+        /*
+        //TODO
+        Reading and writing data from/to hdfs
+        https://0x0fff.com/spark-hdfs-integration/
+         */
+
         /*This snippet needs to be there in order to copy file local file system to hdfs.*/
         Configuration hadoopConf = new Configuration();
 
