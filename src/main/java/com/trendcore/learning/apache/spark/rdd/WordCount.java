@@ -24,7 +24,7 @@ public class WordCount {
          */
 
         /*This snippet needs to be there in order to copy file local file system to hdfs.*/
-        Configuration hadoopConf = new Configuration();
+        /*Configuration hadoopConf = new Configuration();
 
         FileSystem hdfs = FileSystem.get(hadoopConf);
 
@@ -34,7 +34,7 @@ public class WordCount {
         Path destPath = new Path("hdfs://<ip>/in/word_count");
 
 
-        hdfs.copyFromLocalFile(srcPath, destPath);
+        hdfs.copyFromLocalFile(srcPath, destPath);*/
 
         /**/
 
@@ -42,7 +42,7 @@ public class WordCount {
 
         JavaSparkContext sparkContext = new JavaSparkContext(wordCountSparkConf);
 
-        JavaRDD<String> stringJavaRDD = sparkContext.textFile("hdfs://<ip>/in/word_count.text");
+        JavaRDD<String> stringJavaRDD = sparkContext.textFile("hdfs://0.0.0.0:9000/user/anurag/in/word_count.text");
 
         List<Tuple2<String, Integer>> collect = stringJavaRDD.flatMap(s ->
                 Arrays.asList(s.split(" ")).iterator()
