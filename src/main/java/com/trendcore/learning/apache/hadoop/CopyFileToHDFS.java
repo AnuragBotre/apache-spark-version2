@@ -10,7 +10,10 @@ public class CopyFileToHDFS {
 
     public static void main(String[] args) throws IOException {
         Configuration hadoopConf = new Configuration();
+
+        //This value is present in <HADOOP_HOME>/etc/hadoop/core-site.xml
         hadoopConf.set("fs.default.name", "hdfs://0.0.0.0:9000");
+
         FileSystem hdfs = FileSystem.get(hadoopConf);
         Path srcPath = new Path("in/word_count.text");
         Path destPath = new Path("in/word_count.text");
