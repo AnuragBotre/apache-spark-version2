@@ -1,1 +1,14 @@
 https://sujithjay.com/spark/with-yarn
+
+https://www.justanalytics.com/blog/technical-know-how/tuning-resource-allocation-in-apache-spark
+
+https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html
+
+https://stackoverflow.com/questions/58380969/tuning-spark-number-of-executors-per-node-when-cores-available-are-uneven
+
+Spark with Yarn Cluster.
+https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781787127265/1/ch01lvl1sec16/deploying-spark-on-a-cluster-with-yarn
+
+
+https://blog.cloudera.com/how-to-tune-your-apache-spark-jobs-part-2/
+https://stackoverflow.com/questions/30031214/using-spark-submit-what-is-the-behavior-of-the-total-executor-cores-option
