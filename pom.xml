@@ -8,20 +8,28 @@
     <artifactId>apache-spark-version2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <spark.version>2.4.7</spark.version>
+    </properties>
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
-            <version>2.4.7</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.11</artifactId>
-            <version>2.4.7</version>
+            <version>${spark.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_2.11</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
