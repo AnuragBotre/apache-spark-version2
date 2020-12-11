@@ -30,6 +30,9 @@ public class FirstStreamProcessing {
         /*
             Use anurag@anurag-pc:~/Desktop$ nc -lk 9999
                command to send text data to this socket.
+
+               Certain methods are available on streamingContext.
+               Hence streamingContext object is required.
          */
 
         JavaReceiverInputDStream<String> dStream = streamingContext.socketTextStream("localhost", 9999);
@@ -51,6 +54,8 @@ public class FirstStreamProcessing {
                 /*
                     save data to third party system pseudo code
                   Connection connection = Connection to System
+                  Dont use for each method as it will create and close connection for each record
+                  and is not performance based solution.
                  */
 
                 tuple2Iterator.forEachRemaining(tuple2LongTuple2 -> {
