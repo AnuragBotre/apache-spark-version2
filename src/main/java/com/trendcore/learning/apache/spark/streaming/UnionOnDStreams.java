@@ -23,6 +23,8 @@ public class UnionOnDStreams {
         JavaReceiverInputDStream<String> secondStream = javaStreamingContext.socketTextStream("localhost",9100);
 
         /*
+            union :- Return a new DStream that contains the union of the elements in the source DStream and otherDStream.
+
             This program will not run on 2 core machine. As the both the core will be used for listening
          */
         firstStream
