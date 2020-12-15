@@ -28,12 +28,14 @@ public class UnionOnDStreams {
         firstStream
         .union(secondStream)
         .foreachRDD((stringJavaRDD, time) -> {
+            System.out.println("Printing results :- " + time);
             stringJavaRDD.foreachPartition(iterator -> {
                 iterator.forEachRemaining(s -> {
                     System.out.println(s);
                 });
             });
-        });
+        })
+        ;
 
         javaStreamingContext.start();
         javaStreamingContext.awaitTermination();
