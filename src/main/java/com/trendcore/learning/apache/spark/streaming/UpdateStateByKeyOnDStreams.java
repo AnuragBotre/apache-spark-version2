@@ -52,18 +52,14 @@ public class UpdateStateByKeyOnDStreams {
                     /*
                         Explanation :- In particular batch if we did not receive any elements
                         then send previous state only (which might be 0 in case data is not received from first batch).
-
+                        we calculated all the counts from the list and returned updated state.
                      */
-                    if (list.isEmpty()) {
-                        Object o = oldState.orElse(0L);
-                        return Optional.of(o);
-                    } else {
-                        Long o = (Long) oldState.orElse(0L);
+                    Long o = (Long) oldState.orElse(0L);
 
-                        long count = list.stream().reduce(o, (aLong, aLong2) -> aLong + aLong2);
+                    long count = list.stream().reduce(o, (aLong, aLong2) -> aLong + aLong2);
 
-                        return Optional.of( count);
-                    }
+                    return Optional.of( count);
+
                 })
                 .print();
 
