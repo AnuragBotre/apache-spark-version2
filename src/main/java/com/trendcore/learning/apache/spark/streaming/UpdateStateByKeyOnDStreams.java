@@ -6,7 +6,6 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.Optional;
 import org.apache.spark.streaming.Durations;
-import org.apache.spark.streaming.StateSpecImpl;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
@@ -32,7 +31,9 @@ public class UpdateStateByKeyOnDStreams {
         JavaReceiverInputDStream<String> dStream = javaStreamingContext.socketTextStream("localhost", 9999);
 
         /*
-            https://techvidvan.com/tutorials/spark-streaming-stateful-transformations/
+            1. https://techvidvan.com/tutorials/spark-streaming-stateful-transformations/
+
+            2. https://databricks.gitbooks.io/databricks-spark-reference-applications/content/logs_analyzer/chapter1/total.html
 
             These are operations on DStreams that track data across time.
             It defines, uses some data from the previous batch to generate the results for a new batch.
@@ -42,33 +43,39 @@ public class UpdateStateByKeyOnDStreams {
 
          */
 
-        JavaPairDStream<String, Object> stringObjectJavaPairDStream = dStream
+        dStream
                 .flatMap(line -> Arrays.asList(line.split(" ")).iterator())
                 .mapToPair(word -> new Tuple2<>(word, 1))
+                .countByValue()
+                .updateStateByKey((list, oldState) -> {
 
-                .updateStateByKey((list, previousStateValue) -> {
-                    System.out.println("Inside previousStateValue :- " + previousStateValue);
+                    /*
+                        Explanation :- In particular batch if we did not receive any elements
+                        then send previous state only (which might be 0 in case data is not received from first batch).
 
-                    Optional newStateValue;
-                    if (previousStateValue.isPresent()) {
-                        Integer o = (Integer) previousStateValue.get();
-                        int i = o + 1;
-                        newStateValue = Optional.of(i);
+                     */
+                    if (list.isEmpty()) {
+                        Object o = oldState.orElse(0L);
+                        return Optional.of(o);
                     } else {
-                        newStateValue = Optional.of(1);
+                        Long o = (Long) oldState.orElse(0L);
+
+                        long count = list.stream().reduce(o, (aLong, aLong2) -> aLong + aLong2);
+
+                        return Optional.of( count);
                     }
-                    return newStateValue;
-                });
+                })
+                .print();
 
 
-        stringObjectJavaPairDStream.foreachRDD((rdd, timeUnits) -> {
+        /*stringObjectJavaPairDStream.foreachRDD((rdd, timeUnits) -> {
             System.out.println("Timeunites :- " + timeUnits);
             rdd.foreachPartition(tuple2Iterator -> {
                 tuple2Iterator.forEachRemaining(stringObjectTuple2 -> {
                     System.out.println(stringObjectTuple2);
                 });
             });
-        });
+        });*/
 
         javaStreamingContext.start();
         javaStreamingContext.awaitTermination();
