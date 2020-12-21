@@ -37,6 +37,8 @@ public class WindowingOnDStream {
                     windowDuration – width of the window; must be a multiple of this DStream's interval.
                     It will return result word counts over the last 30 seconds of data,
                     series of RDD of last 30 sec will be stored in memory.
+                    By Default Slide interval will be batch Duration
+                    in this case it will 10 sec.
                 */
             .window(Durations.seconds(30))
             .flatMap(line -> Arrays.asList(line.split(" ")).iterator())
