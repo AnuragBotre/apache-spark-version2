@@ -1,3 +1,18 @@
+https://github.com/Red5/red5-server
+    red5-server - Red5 server core
+
+    TravisCI Maven Central PRs Welcome
+
+    Red5 is an Open Source Flash Server written in Java that supports:
+
+        Streaming Video (FLV, F4V, MP4, 3GP)
+        Streaming Audio (MP3, F4A, M4A, AAC)
+        Recording Client Streams (FLV and AVC+AAC in FLV container)
+        Shared Objects
+        Live Stream Publishing
+        Remoting
+        Protocols: RTMP, RTMPT, RTMPS, and RTMPE
+
 https://www.waitingforcode.com/apache-spark/apache-spark-data-bigger-than-memory/read
 
 https://g1thubhub.github.io/spark-memory.html
