@@ -1,3 +1,10 @@
+https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
+-- Caching vs Checkpointing
+http://www.lifeisafile.com/Apache-Spark-Caching-Vs-Checkpointing/
+-- Caching vs Checkpointing
+https://medium.com/@adrianchang/apache-spark-checkpointing-ebd2ec065371
+-- Caching vs Checkpointing
+
 https://github.com/Red5/red5-server
     red5-server - Red5 server core
 
