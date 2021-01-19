@@ -1,4 +1,11 @@
 https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
+-- Caching vs Checkpointing
+http://www.lifeisafile.com/Apache-Spark-Caching-Vs-Checkpointing/
+-- Caching vs Checkpointing
+https://medium.com/@adrianchang/apache-spark-checkpointing-ebd2ec065371
+-- Caching vs Checkpointing
+
+https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
 https://github.com/JerryLead/SparkInternals/blob/master/markdown/english/6-CacheAndCheckpoint.md
 https://intellipaat.com/community/7571/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
 -
