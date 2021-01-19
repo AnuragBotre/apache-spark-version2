@@ -1,3 +1,25 @@
+https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
+https://github.com/JerryLead/SparkInternals/blob/master/markdown/english/6-CacheAndCheckpoint.md
+https://intellipaat.com/community/7571/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
+-
+ Persist
+
+     Persisting or caching with StorageLevel.DISK_ONLY cause the generation of RDD to be computed
+     and stored in a location such that subsequent use of that RDD will not go beyond
+     that points in recomputing the linage.
+     After persist is called, Spark still remembers the lineage of the RDD even though it
+     doesn't call it.
+     Secondly, after the application terminates, the cache is cleared or file destroyed
+
+ Checkpointing
+
+     Checkpointing stores the rdd physically to hdfs and destroys the lineage that created it.
+     The checkpoint file won't be deleted even after the Spark application terminated.
+     Checkpoint files can be used in subsequent job run or driver program
+     Checkpointing an RDD causes double computation because the operation will first call a
+     cache before doing the actual job of computing and writing to the checkpoint directory.
+-
+
 https://github.com/Red5/red5-server
     red5-server - Red5 server core
 
