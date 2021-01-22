@@ -1,3 +1,8 @@
+https://stackoverflow.com/questions/32517976/how-to-get-data-from-a-specific-partition-in-spark-rdd
+val zeroth = rdd
+  // If partition number is not zero ignore data
+  .mapPartitionsWithIndex((idx, iter) => if (idx == 0) iter else Iterator())
+
 https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
 -- Caching vs Checkpointing
 http://www.lifeisafile.com/Apache-Spark-Caching-Vs-Checkpointing/
