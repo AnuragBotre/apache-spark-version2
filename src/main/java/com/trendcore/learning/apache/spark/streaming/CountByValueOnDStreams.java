@@ -17,8 +17,8 @@ public class CountByValueOnDStreams {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Logger.getLogger("org").setLevel(Level.OFF);
-        Logger.getLogger("akka").setLevel(Level.OFF);
+        /*Logger.getLogger("org").setLevel(Level.OFF);
+        Logger.getLogger("akka").setLevel(Level.OFF);*/
 
         SparkConf sparkConf = new SparkConf().setAppName("Count By Value").setMaster("local[*]");
 
@@ -40,13 +40,17 @@ public class CountByValueOnDStreams {
 
         JavaPairDStream<String, Long> stringLongJavaPairDStream
                 = dStream
-                    .flatMap(v1 -> Arrays.asList(v1.split(" ")).iterator())
+                    .flatMap(v1 -> {
+                        System.out.println(Thread.currentThread().getName() + " " + v1);
+                        return Arrays.asList(v1.split(" ")).iterator();
+                    })
                     .countByValue()
                 ;
 
         stringLongJavaPairDStream.foreachRDD((rdd, timeUnits) -> {
-            System.out.println("TimeUnits :- " + new SimpleDateFormat("dd-M-yyyy hh:mm:ss").format(new Date(timeUnits.milliseconds())));
+            System.out.println(Thread.currentThread().getName() + " TimeUnits :- " + new SimpleDateFormat("dd-M-yyyy hh:mm:ss").format(new Date(timeUnits.milliseconds())));
             rdd.foreachPartition(tuple2Iterator -> {
+                System.out.println(Thread.currentThread().getName() + " " + rdd);
                 tuple2Iterator.forEachRemaining(stringLongTuple2 -> {
                     System.out.println(stringLongTuple2._1 + " " + stringLongTuple2._2);
                 });
