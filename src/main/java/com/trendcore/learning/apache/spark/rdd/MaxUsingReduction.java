@@ -1,6 +1,6 @@
 package com.trendcore.learning.apache.spark.rdd;
 
-import com.trendcore.learning.apache.spark.ToRDD;
+import com.scala.trendcore.learning.apache.spark.ToRDD;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;

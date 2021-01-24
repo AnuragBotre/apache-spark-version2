@@ -22,9 +22,15 @@ object CountByValueOnDStreams {
 
              */
 
-      dStream
-        .flatMap(_.split(" "))
-        .map(new Tuple2[String,Integer](_,1))
+    val value = dStream
+      .flatMap(_.split(" "))
+      .map(new Tuple2[String, Integer](_, 1))
+      .countByValue()
+
+
+    value.foreachRDD(rdd => {
+      rdd.foreachPartition(_.foreach(println(_)));
+    })
 
 
       streamingContext.start()

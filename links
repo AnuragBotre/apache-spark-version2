@@ -1,3 +1,6 @@
+https://www.youtube.com/watch?v=z-2l-SKdFsY
+-- Effective Scala development in IntelliJ Idea by Mikhail Mutcianko
+
 https://stackoverflow.com/questions/32517976/how-to-get-data-from-a-specific-partition-in-spark-rdd
 val zeroth = rdd
   // If partition number is not zero ignore data
