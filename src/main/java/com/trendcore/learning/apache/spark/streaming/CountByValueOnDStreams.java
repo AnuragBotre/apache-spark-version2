@@ -20,7 +20,8 @@ public class CountByValueOnDStreams {
         /*Logger.getLogger("org").setLevel(Level.OFF);
         Logger.getLogger("akka").setLevel(Level.OFF);*/
 
-        SparkConf sparkConf = new SparkConf().setAppName("Count By Value").setMaster("local[*]");
+        //SparkConf sparkConf = new SparkConf().setAppName("Count By Value").setMaster("local[*]");
+        SparkConf sparkConf = new SparkConf().setAppName("Count By Value");
 
         JavaSparkContext javaSparkContext = new JavaSparkContext(sparkConf);
 
