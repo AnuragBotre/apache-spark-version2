@@ -1,4 +1,4 @@
-package com.trendcore.learning.apache.spark
+package com.scala.trendcore.learning.apache.spark
 
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
