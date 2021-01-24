@@ -10,7 +10,9 @@ import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import scala.Tuple2;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class TransformOnDstream {
 
@@ -39,7 +41,7 @@ public class TransformOnDstream {
 
 
         transformedDStream.foreachRDD((v1, timeUnits) -> {
-            System.out.println("Timeunit :- "+timeUnits);
+            System.out.println(Thread.currentThread().getName() + " TimeUnits :- " + new SimpleDateFormat("dd-M-yyyy hh:mm:ss").format(new Date(timeUnits.milliseconds())));
             v1.foreachPartition(tuple2Iterator -> {
                 tuple2Iterator.forEachRemaining(s -> System.out.println(s));
             });

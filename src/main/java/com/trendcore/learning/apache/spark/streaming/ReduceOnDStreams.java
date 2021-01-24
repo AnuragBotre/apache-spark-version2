@@ -9,6 +9,9 @@ import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaReceiverInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ReduceOnDStreams {
 
     public static void main(String[] args) throws InterruptedException {
@@ -52,7 +55,11 @@ public class ReduceOnDStreams {
                 Integer result = rdd.reduce((previousObject, currentObject) -> {
                     return previousObject + currentObject;
                 });
-                System.out.println("TimeUnit :- " + timeUnit + " No of words in RDD for given window :- " + result);
+                System.out.println(Thread.currentThread().getName() + " TimeUnits :- "
+                        + new SimpleDateFormat("dd-M-yyyy hh:mm:ss").format(new Date(timeUnit.milliseconds()))
+                        +" "
+                        + result
+                );
             }
 
 
