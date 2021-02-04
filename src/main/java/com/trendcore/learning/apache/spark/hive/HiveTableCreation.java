@@ -16,6 +16,9 @@ public class HiveTableCreation {
                 .master("local[*]")
                 .enableHiveSupport()  // <-- enables Hive support
                 .getOrCreate();
+        /*
+            https://github.com/apache/spark/blob/master/examples/src/main/scala/org/apache/spark/examples/sql/hive/SparkHiveExample.scala
+         */
 
         sparkSession.sql("CREATE TABLE IF NOT EXISTS src (key INT, value STRING) USING hive");
 

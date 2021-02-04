@@ -23,8 +23,10 @@ object WordCountUsingScala {
       str.split(" ")
     }).map((str: String) => {
       Tuple2(str,1)
-    }).foreach((tuple: (String, Int)) => {
-      println(tuple)
+    }).groupByKey().foreachPartition((tuples: Iterator[(String, Iterable[Int])]) => {
+      tuples.foreach((tuple: (String, Iterable[Int])) => {
+        println(tuple)
+      })
     })
 
 
