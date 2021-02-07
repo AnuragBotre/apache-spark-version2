@@ -1,3 +1,10 @@
+https://spark.apache.org/docs/2.4.7/mllib-data-types.html
+
+https://radanalytics.io/tutorials
+These tutorials have been designed to showcase technologies and design patterns that can be used to begin
+creating intelligent applications on OpenShift.
+We have split them into two broad categories: examples and applications.
+
 https://towardsdatascience.com/fetch-failed-exception-in-apache-spark-decrypting-the-most-common-causes-b8dff21075c
 https://stackoverflow.com/questions/34941410/fetchfailedexception-or-metadatafetchfailedexception-when-processing-big-data-se
 
