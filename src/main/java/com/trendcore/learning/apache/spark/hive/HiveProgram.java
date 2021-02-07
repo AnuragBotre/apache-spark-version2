@@ -57,6 +57,7 @@ public class HiveProgram {
                 .builder()
                 .master("local[*]")
                 .appName("Java Spark Hive Example")
+                //not required
                 .config("spark.sql.warehouse.dir", warehouseLocation)
                 .enableHiveSupport()
                 .getOrCreate();
