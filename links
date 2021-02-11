@@ -1,5 +1,9 @@
 https://spark.apache.org/docs/2.4.7/mllib-data-types.html
 
+https://www.bmc.com/blogs/using-spark-with-hive/
+Using Spark with Hive - In this link hive will use spark as processing engine instead of map reduce.
+Edit $HIVE_HOME/conf/hive-site.xml:
+
 https://radanalytics.io/tutorials
 These tutorials have been designed to showcase technologies and design patterns that can be used to begin
 creating intelligent applications on OpenShift.
