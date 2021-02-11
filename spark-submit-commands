@@ -49,6 +49,10 @@ Below spark submit command worked for Hive.
 Follow steps from below link to run spark job from hive.
 -- https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/demo/demo-connecting-spark-sql-to-hive-metastore.html
 
+when starting beeserver if faced any exception then  refer below link
+https://coding-stream-of-consciousness.com/2019/06/06/hive-server-2-required-field-serverprotocolversion-is-unset/
+
+
 spark-submit
 --jars $HIVE_HOME/lib/hive-metastore-2.3.8.jar,
     $HIVE_HOME/lib/hive-exec-2.3.8.jar,
