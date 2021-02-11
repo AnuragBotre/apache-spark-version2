@@ -1,0 +1,60 @@
+While deploying spark to Yarn we need to specify queue name as well.
+spark-submit --master yarn --class com.trendcore.learning.apache.spark.rdd.SparkMasterRDD target/apache-spark-version2-1.0-SNAPSHOT.jar --queue default
+
+
+Spark Submit Command
+spark-submit --master spark://192.168.0.104:7077 --class com.trendcore.learning.apache.spark.streaming.CountByValueOnDStreams target/apache-spark-version2-1.0-SNAPSHOT.jar
+
+To Debug Driver Code
+spark-submit --driver-java-options -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 --master spark://192.168.0.104:7077 --class com.trendcore.learning.apache.spark.streaming.CountByValueOnDStreams target/apache-spark-version2-1.0-SNAPSHOT.jar
+
+
+
+spark submit add multiple jars in classpath
+https://stackoverflow.com/questions/29099115/spark-submit-add-multiple-jars-in-classpath
+./bin/spark-submit --class "SparkTest" --master local[*] --jars /fullpath/first.jar,/fullpath/second.jar /fullpath/your-program.jar
+
+
+
+Ex:-
+spark-submit --driver-java-options -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005
+ --master spark://0.0.0.0:7077
+ --jars /home/anurag/Apache-Spark/mysql-connector-java-8.0.22.jar
+ --class com.trendcore.learning.apache.spark.dataframe.JdbcDataFrameWithOnePartition target/apache-spark-version2-1.0-SNAPSHOT.jar
+
+
+
+spark-submit
+ --master spark://0.0.0.0:7077
+ --class com.trendcore.learning.apache.spark.hive.HiveWithMetaStoreLocationOnHadoop target/apache-spark-version2-1.0-SNAPSHOT.jar
+
+
+
+https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/demo/demo-connecting-spark-sql-to-hive-metastore.html
+
+https://coding-stream-of-consciousness.com/2019/06/06/hive-server-2-required-field-serverprotocolversion-is-unset/
+
+-- To use installed hive version.
+-- In order to access hive metastore location
+
+
+
+spark-submit
+--master spark://0.0.0.0:7077
+--files /home/anurag/Apache-Hadoop/apache-hive-2.3.8-bin/conf/hive-site.xml
+--conf spark.sql.hive.metastore.version=2.3.0 --conf spark.sql.hive.metastore.jars=/home/anurag/Apache-Hadoop/apache-hive-2.3.8-bin/lib/*
+--class com.trendcore.learning.apache.spark.hive.HiveWithMetaStoreLocationOnHadoop target/apache-spark-version2-1.0-SNAPSHOT.jar
+
+Below spark submit command worked for Hive.
+Follow steps from below link to run spark job from hive.
+-- https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/demo/demo-connecting-spark-sql-to-hive-metastore.html
+
+spark-submit
+--jars $HIVE_HOME/lib/hive-metastore-2.3.8.jar,
+    $HIVE_HOME/lib/hive-exec-2.3.8.jar,
+    $HIVE_HOME/lib/hive-common-2.3.8.jar,
+    $HIVE_HOME/lib/hive-serde-2.3.8.jar,
+    $HIVE_HOME/lib/guava-14.0.1.jar
+--conf spark.sql.hive.metastore.version=2.3
+--conf spark.sql.hive.metastore.jars=$HIVE_HOME"/lib/*"
+--class com.trendcore.learning.apache.spark.hive.HiveWithMetaStoreLocationOnHadoop target/apache-spark-version2-1.0-SNAPSHOT.jar

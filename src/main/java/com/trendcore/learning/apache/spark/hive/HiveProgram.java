@@ -51,6 +51,19 @@ public class HiveProgram {
             which defaults to the directory spark-warehouse in the current
              directory that the Spark application is started
          */
+        /*
+
+                val spark = SparkSession
+                                .builder()
+                                .appName("ApplicationName")
+                                .master("yarn")
+                                .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+                                .config("spark.executor.memory", "48120M")
+                                .config("hive.metastore.warehouse.dir", "hdfs://ip-10-129-224-21.eu-west-1.compute.internal:8020/user/hive/warehouse")
+                                .enableHiveSupport()
+                                .getOrCreate();
+
+         */
 
         String warehouseLocation = new File("spark-warehouse").getAbsolutePath();
         SparkSession spark = SparkSession

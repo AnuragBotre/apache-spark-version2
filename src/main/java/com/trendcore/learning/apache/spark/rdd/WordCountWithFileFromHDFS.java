@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class WordCount {
+public class WordCountWithFileFromHDFS {
 
     public static void main(String[] args) throws IOException {
 
