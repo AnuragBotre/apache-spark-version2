@@ -40,6 +40,8 @@ object Example2 {
     frame.select("department.*").show()
 
 
+    frame.select("department.id","department.name").show()
+
     explodeEmployees(frame)
 
 
@@ -81,6 +83,21 @@ object Example2 {
 
 
 
+    println("lastName IS NULL")
+    //where clause to find out NULL
+    frame1.where("lastName IS NULL").show()
+
+
+    println("lastName IS NOT NULL")
+    //where clause to find out NOT NULL
+    frame1.where("lastName IS NOT NULL").show()
+
+    println("Alias ")
+    frame1.select(col("id").alias("id_id")).show()
+
+    frame1.select(col("id").as("id_id")).show()
+
+
     /*
     withColumn
 
@@ -88,6 +105,10 @@ object Example2 {
         it is not suggestible to chain withColumn() function as it leads into performance issue
         and recommends to use select() after creating a temporary view on DataFrame
      */
+    frame1.withColumn("newIdCol",col("id")).show()
+
+
+    //window function
   }
 
   private def explodeEmployees(frame: DataFrame) = {
