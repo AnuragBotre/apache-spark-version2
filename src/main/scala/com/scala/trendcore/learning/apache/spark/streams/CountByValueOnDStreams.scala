@@ -1,6 +1,6 @@
-package com.scala.trendcore.learning.apache.spark.streaming
+package com.scala.trendcore.learning.apache.spark.streams
 
-import org.apache.spark.{SPARK_BRANCH, SparkConf}
+import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Durations, StreamingContext}
 
 object CountByValueOnDStreams {
@@ -33,7 +33,7 @@ object CountByValueOnDStreams {
     })
 
 
-      streamingContext.start()
+    streamingContext.start()
     streamingContext.awaitTermination()
   }
 }

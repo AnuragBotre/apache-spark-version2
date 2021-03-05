@@ -1,4 +1,4 @@
-package com.scala.trendcore.learning.apache.spark
+package com.scala.trendcore.learning.apache.spark.rdd
 
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -22,7 +22,7 @@ object WordCountUsingScala {
     rdd.flatMap((str: String) => {
       str.split(" ")
     }).map((str: String) => {
-      Tuple2(str,1)
+      Tuple2(str, 1)
     }).groupByKey().foreachPartition((tuples: Iterator[(String, Iterable[Int])]) => {
       tuples.foreach((tuple: (String, Iterable[Int])) => {
         println(tuple)
