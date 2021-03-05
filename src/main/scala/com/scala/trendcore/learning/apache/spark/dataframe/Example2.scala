@@ -64,14 +64,23 @@ object Example2 {
 
 
     println("Using agg -> expr ")
+
     frame1
+      //frame1 -> id,name,firstName,lastName,email,salary
       .select("name","salary")
+      //select will return -> name,salary
       .groupBy(col("name"))
+      //group by will group with name
       .agg(
         expr("SUM(salary) as dept_salary_sum"),
-        expr("COUNT(salary) as num_of_entries")
+        expr("COUNT(name) as num_of_entries")
       )
+      //group by has to be followed by agg function
+      //agg -> agg(expr("<expr>")) will get aggregate columns
       .show()
+
+
+
     /*
     withColumn
 
